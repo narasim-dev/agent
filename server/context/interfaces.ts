@@ -2,6 +2,7 @@ import { ExpressContextFunctionArgument } from '@as-integrations/express5'
 import type { PrismaClient, Token, User } from '@prisma/client'
 import type { World3dClient } from '../world3d/client'
 import type { LLMClient } from '../llm/client'
+import { dockerClient } from 'server/docker'
 
 export interface PrismaContext {
   prisma: PrismaClient
@@ -32,4 +33,6 @@ export interface PrismaContext {
    * LLM LLM API client
    */
   llmClient: LLMClient
+
+  dockerClient: typeof dockerClient
 }

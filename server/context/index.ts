@@ -4,6 +4,7 @@ import { TokenType, verifyToken } from '../schema/types/User/helpers/auth'
 import { world3dClient } from '../world3d/client'
 import { llmClient } from '../llm/client'
 import { PrismaContext } from './interfaces'
+import { dockerClient } from 'server/docker'
 
 type CreateContextArgs = {
   req: PrismaContext['req'] | { headers: { authorization: string | undefined } }
@@ -40,5 +41,6 @@ export async function createContext({
     req,
     world3dClient,
     llmClient,
+    dockerClient,
   }
 }
