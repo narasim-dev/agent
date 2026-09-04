@@ -87,7 +87,7 @@ export const dockerContainersResolver = builder.queryField(
           console.log(`ID: ${container.Id}`)
           console.log(`Название: ${container.Names[0]}`)
           console.log(`Статус: ${container.State}`)
-          console.log(`Изображение: ${container.Image}`)
+          console.log(`Образ: ${container.Image}`)
           console.log(`Команды: ${container.Command}`)
           console.log(`Время запуска: ${container.Created}`)
           console.log(`container.Labels`, container.Labels)
