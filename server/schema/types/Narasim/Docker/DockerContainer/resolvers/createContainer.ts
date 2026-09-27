@@ -46,19 +46,21 @@ export const createDockerContainerResolver = builder.mutationField(
             return auxContainer?.inspect()
           })
           .then(function (containerInfo): DockerContainer | null {
-            return containerInfo
-              ? {
-                  id: containerInfo.Id,
-                  names: [containerInfo.Name],
-                  command: containerInfo.Config.Cmd,
-                  created: new Date(containerInfo.Created),
-                  image: containerInfo.Config.Image,
-                  imageID: containerInfo.Image,
-                  state: containerInfo.State.Status,
-                  status: containerInfo.State.Status,
-                  labels: containerInfo.Config.Labels,
-                }
-              : null
+            if (!containerInfo) {
+              return null
+            }
+
+            return {
+              id: containerInfo.Id,
+              names: [containerInfo.Name],
+              command: containerInfo.Config.Cmd,
+              created: new Date(containerInfo.Created),
+              image: containerInfo.Config.Image,
+              imageID: containerInfo.Image,
+              state: containerInfo.State.Status,
+              status: containerInfo.State.Status,
+              labels: containerInfo.Config.Labels,
+            }
           })
       },
     }),
